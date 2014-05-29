@@ -13,8 +13,6 @@
 #ifndef INDEX_H
 #define INDEX_H
 
-//#include <cstddef>
-
 class Index {
     private:
     // the number of columns
