@@ -9,7 +9,6 @@
  * Since 2014-05-28
  */
 
-#include <cassert>
 #include <iostream>
 
 #include "index.h"
@@ -19,6 +18,7 @@ int main() {
     const int num_cases = 4;
     int test_cases[] = { 0, 5, 12, 103 };
     int rows_expected[] = { 0, 1, 2, 20 };
+    int cols_expected[] = { 0, 0, 2, 3 };
     int tests_passed = 0,
         tests_failed = 0,
         actual;
@@ -26,13 +26,30 @@ int main() {
 
     for (int i = 0; i < num_cases; ++i) {
         actual = index.row(test_cases[i]);
-        //assert(actual == rows_expected[i]);
         if (actual == rows_expected[i]) {
             ++tests_passed;
         } else {
             std::cout << "Test case failed!" << std::endl;
             std::cout << "expected: " << rows_expected[i] << ", actual: " << actual; 
             std::cout << ", input: " << test_cases[i] << std::endl << std::endl;
+            ++tests_failed;
+        }
+        actual = index.col(test_cases[i]);
+        if (actual == cols_expected[i]) {
+            ++tests_passed;
+        } else {
+            std::cout << "Test case failed!" << std::endl;
+            std::cout << "expected: " << cols_expected[i] << ", actual: " << actual; 
+            std::cout << ", input: " << test_cases[i] << std::endl << std::endl;
+            ++tests_failed;
+        }
+        actual = index.index(rows_expected[i], cols_expected[i]);
+        if (actual == test_cases[i]) {
+            ++tests_passed;
+        } else {
+            std::cout << "Test case failed!" << std::endl;
+            std::cout << "expected: " << test_cases[i] << ", actual: " << actual; 
+            std::cout << ", input: " << rows_expected[i] << ", " << cols_expected[i] << std::endl << std::endl;
             ++tests_failed;
         }
     }
