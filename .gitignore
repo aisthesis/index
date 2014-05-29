@@ -1,0 +1,13 @@
+#files to ignore
+**/bin/
+/obj/
+*.swp
+*.swo
+*.DS_STORE
+*.DS_Store
+
+# Artifacts from TrueCrypt
+*._*
+
+# symlinks to boost
+include/boost_1_49_0
